@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by knomo on 10/18/15.
- */
 public class Animation extends Pane {
 
     private final AnimationTimer timer;
@@ -52,10 +49,10 @@ public class Animation extends Pane {
             @Override
             public void handle(long now) {
                 GraphicsContext gc = canvas.getGraphicsContext2D();
-                gc.setFill(Color.rgb(0, 0, 0, 0.2)); // clear area with transparent black
+                gc.setFill(Color.rgb(0, 0, 0, 0.2));
                 gc.fillRect(0, 0, 1024, 708);
 
-                drawFireworks(gc);  // draw fireworks
+                drawFireworks(gc);
 
                 if(countDownTillNextFirework == 0) {
                     countDownTillNextFirework = 10 + (int) (Math.random() * 30);
@@ -85,7 +82,6 @@ public class Animation extends Pane {
 
         particles.addAll(newParticles);
     }
-
 
     private void explodeCircle(Particle firework, List<Particle> newParticles) {
         final int count = 20 + (int)(60*Math.random());
@@ -132,7 +128,6 @@ public class Animation extends Pane {
         canvas.setWidth(width);
         canvas.setHeight(height * 0.706);
     }
-
 
     public void start() {
         timer.start();

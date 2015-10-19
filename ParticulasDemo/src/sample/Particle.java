@@ -3,9 +3,6 @@ package sample;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
-/**
- * Created by knomo on 10/18/15.
- */
 public class Particle {
     private static final double GRAVITY = 0.06;
 
@@ -40,14 +37,14 @@ public class Particle {
     public boolean update() {
         lastPosX = posX;
         lastPosY = posY;
-        if (this.usePhysics) { // on way down
+        if (this.usePhysics) {
             velY += GRAVITY;
             posY += velY;
-            this.alpha -= this.fade; // fade out particle
-        } else { // on way up
+            this.alpha -= this.fade;
+        } else {
             double distance = (targetY - posY);
-            posY += distance * (0.03 + easing); // ease the position
-            alpha = Math.min(distance * distance * 0.00005, 1);// cap to 1
+            posY += distance * (0.03 + easing);
+            alpha = Math.min(distance * distance * 0.00005, 1);
         }
         posX += velX;
         return alpha < 0.005;
@@ -56,8 +53,8 @@ public class Particle {
     public void draw(GraphicsContext context) {
         final double x = Math.round(posX);
         final double y = Math.round(posY);
-        context.setGlobalAlpha(Math.random() * this.alpha); // set the opacity for all drawing of this particle
-        context.setFill(color); // draw particle
+        context.setGlobalAlpha(Math.random() * this.alpha);
+        context.setFill(color);
         context.fillOval(x - radius, y - radius, radius + radius, radius + radius);
     }
 }
